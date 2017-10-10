@@ -1,0 +1,47 @@
+{
+  "name": "JoncorTech/laravel-auth-client",
+  "description": "Artisan commands for work with the Jincor Auth Service",
+  "keywords": ["auth", "env", "laravel", "artisan", "jwt"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "aleserche",
+      "homepage": "https://github.com/Aleserche"
+    },
+    {
+      "name": "Jincor Team",
+      "homepage": "https://jincor.com"
+    }
+  ],
+  "require": {
+    "php": "^7.0",
+    "illuminate/support": "^5.0",
+    "laravel/framework": "^5.0",
+    "jincor/auth-php-client": "^0.1.0"
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "2.*",
+    "orchestra/testbench": "~3.3",
+    "mockery/mockery": "^1.0.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "JincorTech\\AuthClient\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "JincorTech\\AuthClient\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "test": "vendor/bin/phpunit"
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "JincorTech\\AuthClient\\AuthClientServiceProvider"
+      ]
+    }
+  }
+}
