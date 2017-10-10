@@ -31,6 +31,17 @@ Register the service provider:
   auth:register:tenant  Tenant registration
 ```
 
+Project setup
+-------------
+1. Clone the repo
+2. `cd /path/to/repo`
+3. `docker-compose build` - build development containers
+4. `docker-compose up -d` - run container
+
+Local testing
+-------------
+To run all tests just type `docker-compose exec workspace ./vendor/bin/phpunit`
+
 Credits
 -------
 * [Aleserche](https://github.com/Aleserche)
