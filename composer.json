@@ -1,5 +1,5 @@
 {
-  "name": "JoncorTech/laravel-auth-client",
+  "name": "jincor/laravel-auth-client",
   "description": "Artisan commands for work with the Jincor Auth Service",
   "keywords": ["auth", "env", "laravel", "artisan", "jwt"],
   "license": "MIT",
