@@ -1,5 +1,6 @@
 # laravel-auth-client
 ![](https://travis-ci.org/JincorTech/laravel-auth-client.svg?branch=master)
+![](https://styleci.io/repos/105762989/shield)
 ![](https://habrastorage.org/webt/59/d5/42/59d542206afbe280817420.png)
 
 This package brings a set of artisan commands that allows you work with Jincor Auth Service.
