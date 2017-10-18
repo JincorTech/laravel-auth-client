@@ -7,8 +7,7 @@ use Illuminate\Console\Command;
 use JincorTech\AuthClient\AuthServiceInterface;
 
 /**
- * Class LoginTenant
- * @package JincorTech\AuthClient\Commands
+ * Class LoginTenant.
  */
 class LoginTenant extends Command
 {
@@ -42,7 +41,7 @@ class LoginTenant extends Command
                 $this->info('The token cannot be set to .env file, since the IDENTITY_JWT is not empty.');
             }
 
-            $this->info('token: ' . $token);
+            $this->info('token: '.$token);
         } catch (Exception $e) {
             $this->error($e->getMessage());
         }
