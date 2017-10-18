@@ -7,8 +7,7 @@ use Illuminate\Console\Command;
 use JincorTech\AuthClient\AuthServiceInterface;
 
 /**
- * Class RegisterTenant
- * @package JincorTech\AuthClient\Commands
+ * Class RegisterTenant.
  */
 class RegisterTenant extends Command
 {

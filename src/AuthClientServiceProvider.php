@@ -8,8 +8,7 @@ use JincorTech\AuthClient\Commands\LoginTenant;
 use JincorTech\AuthClient\Commands\RegisterTenant;
 
 /**
- * Class AuthClientServiceProvider
- * @package JincorTech\AuthClient
+ * Class AuthClientServiceProvider.
  */
 class AuthClientServiceProvider extends ServiceProvider
 {
@@ -31,10 +30,10 @@ class AuthClientServiceProvider extends ServiceProvider
             return new AuthClient(
                 new Client([
                     'base_uri' => config('jincor-auth.uri'),
-                    'headers' => [
-                        'Accept' => 'application/json',
+                    'headers'  => [
+                        'Accept'       => 'application/json',
                         'Content-Type' => 'application/json',
-                    ]
+                    ],
                 ])
             );
         });
