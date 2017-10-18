@@ -29,7 +29,7 @@ class AuthClientCommandsTest extends TestCase
             'w'
         );
 
-        fputs($fh, "IDENTITY_SCHEME=http\nIDENTITY_HOST=localhost\nIDENTITY_PORT=3000\nIDENTITY_JWT=\n");
+        fwrite($fh, "IDENTITY_SCHEME=http\nIDENTITY_HOST=localhost\nIDENTITY_PORT=3000\nIDENTITY_JWT=\n");
         fclose($fh);
 
         $this->dotEnv = new Dotenv(__DIR__);
@@ -55,20 +55,20 @@ class AuthClientCommandsTest extends TestCase
                 ->shouldReceive('registerTenant')
                 ->withArgs([
                     $email,
-                    $password
+                    $password,
                 ])
                 ->andReturn(
                     new TenantRegistrationResult([
-                        'id' => 'uuid',
+                        'id'    => 'uuid',
                         'email' => $email,
-                        'login' => 'tenant-login'
+                        'login' => 'tenant-login',
                     ])
                 )
                 ->getMock();
         });
 
         $this->artisan('auth:register:tenant', [
-            'email' => $email,
+            'email'    => $email,
             'password' => $password,
         ]);
     }
@@ -94,10 +94,10 @@ class AuthClientCommandsTest extends TestCase
 
         $this->artisan('auth:register:tenant', [
             'password' => $password,
-            'email' => 'testtest.com',
+            'email'    => 'testtest.com',
         ]);
 
-        $this->assertEquals('Error' . PHP_EOL, Artisan::output());
+        $this->assertEquals('Error'.PHP_EOL, Artisan::output());
     }
 
     /**
@@ -112,14 +112,14 @@ class AuthClientCommandsTest extends TestCase
                 ->shouldReceive('loginTenant')
                 ->withArgs([
                     $email,
-                    $password
+                    $password,
                 ])
                 ->andReturn('jwt-token')
                 ->getMock();
         });
 
         $this->artisan('auth:login:tenant', [
-            'email' => $email,
+            'email'    => $email,
             'password' => $password,
         ]);
 
@@ -145,17 +145,17 @@ class AuthClientCommandsTest extends TestCase
                 ->shouldReceive('loginTenant')
                 ->withArgs([
                     $email,
-                    $password
+                    $password,
                 ])
                 ->andThrow(new ClientException('Error', new Request('POST', 'http://auth')))
                 ->getMock();
         });
 
         $this->artisan('auth:login:tenant', [
-            'email' => $email,
+            'email'    => $email,
             'password' => $password,
         ]);
 
-        $this->assertEquals('Error' . PHP_EOL, Artisan::output());
+        $this->assertEquals('Error'.PHP_EOL, Artisan::output());
     }
 }
