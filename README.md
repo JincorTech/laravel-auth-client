@@ -20,6 +20,8 @@ Register the service provider:
      JincorTech\AuthClient\AuthClientServiceProvider::class,
  ],
  ```
+
+Run `php artisan vendor:publish` for create a config file `jincor-auth.php`.
  
  Usage
  -----
