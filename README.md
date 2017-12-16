@@ -31,6 +31,7 @@ Run `php artisan vendor:publish` for create a config file `jincor-auth.php`.
   ...
   auth:login:tenant     Tenant login
   auth:register:tenant  Tenant registration
+  auth:create:user      User creation
 ```
 
 Project setup

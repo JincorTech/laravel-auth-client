@@ -6,6 +6,7 @@ use GuzzleHttp\Client;
 use Illuminate\Support\ServiceProvider;
 use JincorTech\AuthClient\Commands\LoginTenant;
 use JincorTech\AuthClient\Commands\RegisterTenant;
+use JincorTech\AuthClient\Commands\CreateUser;
 
 /**
  * Class AuthClientServiceProvider
@@ -25,6 +26,7 @@ class AuthClientServiceProvider extends ServiceProvider
         $this->commands([
             RegisterTenant::class,
             LoginTenant::class,
+            CreateUser::class,
         ]);
 
         $this->app->bind(AuthServiceInterface::class, function ($app) {
@@ -45,6 +47,7 @@ class AuthClientServiceProvider extends ServiceProvider
         return [
             RegisterTenant::class,
             LoginTenant::class,
+            CreateUser::class,
         ];
     }
 }

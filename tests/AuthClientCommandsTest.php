@@ -2,12 +2,14 @@
 
 namespace JincorTech\AuthClient\Tests;
 
+use Config;
 use Dotenv\Dotenv;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Artisan;
 use JincorTech\AuthClient\AuthServiceInterface;
 use JincorTech\AuthClient\TenantRegistrationResult;
+use JincorTech\AuthClient\UserRegistrationResult;
 use Mockery;
 
 class AuthClientCommandsTest extends TestCase
@@ -157,5 +159,50 @@ class AuthClientCommandsTest extends TestCase
         ]);
 
         $this->assertEquals('Error' . PHP_EOL, Artisan::output());
+    }
+
+    /**
+     * @test
+     */
+    public function createUserTest()
+    {
+        Config::set('jincor-auth.jwt', 'token');
+
+        list($email, $login, $password, $sub, $scope) = ['test@test.com', 'test@test.com', 'Password1', '123', 'admin'];
+
+        $this->app->bind(AuthServiceInterface::class, function ($app) use ($email, $password, $login, $sub, $scope) {
+            return Mockery::mock(AuthServiceInterface::class)
+                ->shouldReceive('createUser')
+                ->withArgs([
+                    [
+                        'email' => $email,
+                        'login' => $login,
+                        'password' => $password,
+                        'sub' => $sub,
+                        'scope' => $scope,
+                    ],
+                    'token'
+                ])
+                ->andReturn(
+                    new UserRegistrationResult([
+                        'id' => 'uuid',
+                        'email' => $email,
+                        'login' => $login,
+                        'tenant' => 'tenant',
+                        'sub' => '123',
+                    ])
+                )
+                ->getMock();
+        });
+
+        $this->artisan('auth:create:user', [
+            'email' => $email,
+            'login' => $login,
+            'password' => $password,
+            'sub' => $sub,
+            '--scope' => $scope,
+        ]);
+
+        Config::set('jincor-auth.jwt', '');
     }
 }

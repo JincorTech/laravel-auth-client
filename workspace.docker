@@ -1,4 +1,4 @@
-FROM laradock/workspace:1.1
+FROM laradock/workspace:1.9-71
 
 MAINTAINER Andrey Degtyaruk <hlogeon1@gmail.com>
 
